@@ -1,5 +1,15 @@
 # 1. Программочки
 
+## Программа 2
+
+Смотреть файлы `task2_server.py` и `task2_client.py`
+
+![image info](./screenshots/Screenshot_2023-04-28_21-02-39.png)
+
+![image info](./screenshots/Screenshot_2023-04-28_21-02-51.png)
+
+![image info](./screenshots/Screenshot_2023-04-28_21-03-21.png)
+
 ## Программа 3
 
 Смотреть файлы `task3_server.py` и `task3_client.py`
