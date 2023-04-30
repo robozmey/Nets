@@ -44,3 +44,26 @@
 
 Ответ `User Datagram Protocol, Src Port: 53, Dst Port: 60293`
 
+
+# FTP 2
+
+Далее скриншоты того, как я потыкался в FTP сервер с клиента
+
+![image info](./screenshots/Screenshot%20(46).png)
+
+![image info](./screenshots/Screenshot%20(47).png)
+
+![image info](./screenshots/Screenshot%20(48).png)
+
+![image info](./screenshots/Screenshot%20(49).png)
+
+![image info](./screenshots/Screenshot%20(50).png)
+
+![image info](./screenshots/Screenshot%20(51).png)
+
+![image info](./screenshots/Screenshot%20(52).png)
+
+![image info](./screenshots/Screenshot%20(53).png)
+
+![image info](./screenshots/Screenshot%20(54).png)
+
