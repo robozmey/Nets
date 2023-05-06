@@ -1,6 +1,6 @@
-# 1. WireSharck: TCP
+# 1. Wireshark: TCP (5 баллов)
 
-## 1. Перехват TCP
+## 1. Перехват TCP-передачи данных от вашего компьютера удаленному серверу
 
 ### 1) 
 
@@ -67,6 +67,6 @@ IP-адрес сервера `128.119.245.12`, port `80`
 
 $R = 21.4339832815 $ Кбайт/с 
 
-## 2. Wireshark: Работа с Time-Sequence-Graph (Stevens)
+## 2. Wireshark: Работа с Time-Sequence-Graph (Stevens) (2 балла)
 
 ![img](./screenshot/Screenshot_2023-05-06_14-39-30.png)

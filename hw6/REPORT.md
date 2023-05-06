@@ -1,4 +1,4 @@
-# WireShark 1
+# 1. Wireshark: UDP (5 баллов)
 
 ### 1) 
 
@@ -45,7 +45,9 @@
 Ответ `User Datagram Protocol, Src Port: 53, Dst Port: 60293`
 
 
-# FTP 2
+# 2. Программирование. FTP
+
+## 1. FileZilla сервер и клиент (3 балла)
 
 Далее скриншоты того, как я потыкался в FTP сервер с клиента
 
