@@ -1,5 +1,7 @@
 # 1. WireSharck: TCP
 
+## 1. Перехват TCP
+
 ### 1) 
 
 Порт на моём компьютере `48512`
@@ -65,4 +67,6 @@ IP-адрес сервера `128.119.245.12`, port `80`
 
 $R = 21.4339832815 $ Кбайт/с 
 
+## 2. Wireshark: Работа с Time-Sequence-Graph (Stevens)
 
+![img](./screenshot/Screenshot_2023-05-06_14-39-30.png)
