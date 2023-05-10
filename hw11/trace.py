@@ -1,4 +1,6 @@
 
+import asyncio
+
 inf = 99999999999
 
 infs = [inf, inf, inf, inf]
@@ -33,17 +35,20 @@ router_distance = {
 
 neigbours = {0: [1, 2, 3], 1: [0, 2], 2: [0, 1, 3], 3: [0, 2]}
 
-router_distance
-
-queues = {0: [], 1: [], 2: [], 3: []}
-
 ways = [way.copy(), way.copy(), way.copy(), way.copy()]
 
 N = 4
 
-def recalc_distance(id, send=False):
-    is_need_recalc = send
-    for i, dists in queues[id]:
+async def recalc_distance(id, queues):
+
+    while True:
+
+        i, dists = await queues[id].get()
+
+        # print(id, i, dists)
+
+        is_need_recalc = False
+
         for j in range(N):
             # print(id, i, j, queues[id], router_distance[id])
             if dists[j] < router_distance[id][i][j]:
@@ -58,36 +63,45 @@ def recalc_distance(id, send=False):
                 # ways[id][j] = i
                 is_need_recalc = True
             
-    queues[id] = []
 
-    for i in range(N):
-        for j in range(N):
-            for k in range(N):
-                if router_distance[id][i][k] > router_distance[id][i][j] + router_distance[id][j][k]:
-                    router_distance[id][i][k] = router_distance[id][i][j] + router_distance[id][j][k]
+        for i in range(N):
+            for j in range(N):
+                for k in range(N):
+                    if router_distance[id][i][k] > router_distance[id][i][j] + router_distance[id][j][k]:
+                        router_distance[id][i][k] = router_distance[id][i][j] + router_distance[id][j][k]
 
-    if is_need_recalc:
-        for id2 in neigbours[id]:
-            queues[id2].append((id, router_distance[id][id]))
+        if is_need_recalc:
 
-    
-for id in range(N):
-    recalc_distance(id, True)
+            for id2 in neigbours[id]:
+                await queues[id2].put((id, router_distance[id][id]))
+
+        queues[id].task_done()
 
     # print(router_distance)
 
-def launch():
-    while 1:
-        is_ended = True
-        for id in range(N):
-            if len(queues[id]) > 0:
-                is_ended = False
-                recalc_distance(id)
 
-        if is_ended:
-            break
+async def main():
 
-launch()
+    queues = {0: asyncio.Queue(), 1: asyncio.Queue(), 2: asyncio.Queue(), 3: asyncio.Queue()}
+
+    for id in range(N):
+        for id2 in range(N):
+            await queues[id2].put((id, router_distance[id][id]))
+
+    tasks = []
+    for id in range(N):
+        task = asyncio.create_task(recalc_distance(id, queues))
+        tasks.append(task)
+
+    for id in range(N):
+        await queues[id].join()
+
+    for task in tasks:
+        task.cancel()
+
+    await asyncio.gather(*tasks, return_exceptions=True)
+
+asyncio.run(main())
 
 def show(arr):
     print('\n'.join([' '.join([str(i) for i in r]) for r in arr]))
@@ -103,9 +117,7 @@ show(router_distance[0])
 
 router_distance[0][0][3] = 1
     
-recalc_distance(0, True)
-
-launch()
+asyncio.run(main())
 
 print('new_distance: ')
 
