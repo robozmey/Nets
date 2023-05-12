@@ -72,3 +72,13 @@
 ## 2. FTP клиент (3 балла)
 
 Решение в файле `ftpclient.py`
+
+`all`
+
+`upload <filename>` 
+
+`download <filename>`
+
+`quit`
+
+`exit`
