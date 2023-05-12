@@ -69,3 +69,6 @@
 
 ![image info](./screenshots/Screenshot%20(54).png)
 
+## 2. FTP клиент (3 балла)
+
+Решение в файле `ftpclient.py`
